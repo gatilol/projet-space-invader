@@ -1,4 +1,5 @@
 from .joueur import joueur
+from .enemi import enemi
 
 
 class Monde: 
@@ -12,4 +13,7 @@ class Monde:
         j.creation_joueur(canvas)
         self.joueur=j
         
+        e=enemi(canvas)
+        e.creation_enemi(canvas)
+        self.enemi=e
         
