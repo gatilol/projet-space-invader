@@ -1,7 +1,7 @@
 
 class joueur:
     def __init__(self,canvas):
-        self.joueur_coord_x=20
+        self.joueur_coord_x=340
         self.joueur_coord_y=650
         self.joueur_hauteur=20
         self.joueur_largeur=20
