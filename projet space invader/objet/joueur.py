@@ -3,8 +3,8 @@ class joueur:
     def __init__(self,canvas):
         self.joueur_coord_x=20
         self.joueur_coord_y=650
-        self.joueur_hauteur=25
-        self.joueur_largeur=25
+        self.joueur_hauteur=20
+        self.joueur_largeur=20
 
     def creation_joueur(self,canvas):
         self.j_id=canvas.create_rectangle(self.joueur_coord_x,
