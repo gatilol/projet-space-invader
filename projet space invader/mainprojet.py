@@ -17,30 +17,29 @@ Monde=Monde(Can)
 def mainLoopCallBack():
 
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
-
     (x_e_0,y_e_0,x_e_1,y_e_1)=canvas.coords(Monde.enemi.j_id)
-    #(x_r_0,y_r_0,x_r_1,y_r_1)=canvas.coords(Monde.projectil.j_id)
 
     Can.after(10, mainLoopCallBack)
 
 
-def deplag(event):
-    """mvt du joueur a gauche """
-    
+def keyboardCallBack(event):
+    """mvt du joueur quand fleche direct """
+    """gauche"""
     x = 0
     y = 0
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
-    if x_p_0 > 0 :
-        x = -10
-    Can.move(Monde.joueur.j_id,x,y) 
+    if event.keysym == "Left":
+        if x_p_0 > 0 :
+            x = -10
+            
     
     
-def deplad(event):
-    x = 0
-    y = 0
-    (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
-    if x_p_1 < 700 :
-        x = 10
+    
+    """droite"""
+    
+    if event.keysym == "Right":
+        if x_p_1 < 700 :
+            x = 10
     Can.move(Monde.joueur.j_id,x,y)   
 
  
@@ -50,7 +49,6 @@ def deplad(event):
 
 
 
-mv.after(10,mainLoopCallBack)
-mv.bind("<Left>",deplag)
-mv.bind("<Right>",deplad)
+mv.after(5,mainLoopCallBack)
+mv.bind("<Key>",keyboardCallBack)
 mv.mainloop()
