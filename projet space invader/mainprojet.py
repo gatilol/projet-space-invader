@@ -18,6 +18,8 @@ def mainLoopCallBack():
 
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
 
+    (x_e_0,y_e_0,x_e_1,y_e_1)=canvas.coords(Monde.enemi.j_id)
+    #(x_r_0,y_r_0,x_r_1,y_r_1)=canvas.coords(Monde.projectil.j_id)
 
     Can.after(10, mainLoopCallBack)
 
