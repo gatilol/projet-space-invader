@@ -1,5 +1,6 @@
-from tkinter import * 
+from tkinter import *
 from objet.monde import Monde
+from objet.joueur import joueur
 
 mv = Tk()
 mv.title('Space Invaders')
@@ -8,16 +9,36 @@ Can.pack()
 photo = Tk.PhotoImage(file = '.bois_noir.jpg')
 fond=C.create_rectangle (0, 0, 700, 700, image=photo) 
 
-
 Monde=Monde(Can)
 
 
 def mainLoopCallBack():
 
-    (x_p_0,y_p_0,x_p_1,y_p_1)=canvas.coords(Monde.joueur.j_id)
+    (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
     (x_e_0,y_e_0,x_e_1,y_e_1)=canvas.coords(Monde.enemi.j_id)
 
-    root.after(10, mainLoopCallBack)
+    Can.after(10, mainLoopCallBack)
 
 
+def keyboardCallBack(event):
+    """mvt du joueur quand fleche direct """
+    
+    x = 0
+    y = 0
+    (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
+    if event.keysym == "Left":
+        if x_p_0 > 0 :
+            x = -10
+        elif x_p_0 <= 0:
+            x = 0
+    elif event.keysym == "Right":
+        if x_p_1 < 800 :
+            x = 10
+        elif x_p_1 >= 800 :
+            x = 0
+    Can.move(Monde.joueur.j_id,x,y)   
+
+
+mv.after(10,mainLoopCallBack)
+mv.bind("<Key>",keyboardCallBack)
 mv.mainloop()
