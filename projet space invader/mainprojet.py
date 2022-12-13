@@ -2,12 +2,14 @@ from tkinter import *
 from objet.monde import Monde
 from objet.joueur import joueur
 
+import os
 mv = Tk()
 mv.title('Space Invaders')
 Can=Canvas(mv, width=800, height=700, bg='white')
 Can.pack()
-
-fond=Can.create_rectangle (0, 0, 700, 700, fill='#000000') 
+os.chdir(os.path.realpath(os.path.dirname(__file__)))
+photo = PhotoImage(file = 'objet/earth.png')
+fond=Can.create_rectangle (0, 0, 700, 700,fill='#000000') 
 
 Monde=Monde(Can)
 
@@ -33,7 +35,6 @@ def keyboardCallBack(event):
     elif event.keysym == "Right":
         if x_p_1 < 700 :
             x = 10
-
     Can.move(Monde.joueur.j_id,x,y)   
 
  
