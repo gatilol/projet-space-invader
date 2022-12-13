@@ -32,14 +32,17 @@ def keyboardCallBack(event):
     if event.keysym == "Left":
         if x_p_0 > 0 :
             x = -10
-        elif x_p_0 <= 0:
-            x = 0
+            
     elif event.keysym == "Right":
         if x_p_1 < 700 :
             x = 10
-        elif x_p_1 >= 700 :
-            x = 0
     Can.move(Monde.joueur.j_id,x,y)   
+
+ 
+
+
+
+
 
 
 mv.after(10,mainLoopCallBack)
