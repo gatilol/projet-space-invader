@@ -9,7 +9,7 @@ Can=Canvas(mv, width=800, height=700, bg='white')
 Can.pack()
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
 photo = PhotoImage(file = 'objet/earth.png')
-fond=Can.create_rectangle (0, 0, 700, 700, image=photo) 
+fond=Can.create_rectangle (0, 0, 700, 700,fill='#000000') 
 
 Monde=Monde(Can)
 
@@ -34,9 +34,9 @@ def keyboardCallBack(event):
         elif x_p_0 <= 0:
             x = 0
     elif event.keysym == "Right":
-        if x_p_1 < 800 :
+        if x_p_1 < 700 :
             x = 10
-        elif x_p_1 >= 800 :
+        elif x_p_1 >= 700 :
             x = 0
     Can.move(Monde.joueur.j_id,x,y)   
 
