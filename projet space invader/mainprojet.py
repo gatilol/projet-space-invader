@@ -1,12 +1,13 @@
 from tkinter import * 
 from objet.monde import Monde
-
+import os
 mv = Tk()
 mv.title('Space Invaders')
 Can=Canvas(mv, width=800, height=700, bg='white')
 Can.pack()
-photo = Tk.PhotoImage(file = '.bois_noir.jpg')
-fond=C.create_rectangle (0, 0, 700, 700, image=photo) 
+os.chdir(os.path.realpath(os.path.dirname(__file__)))
+photo = PhotoImage(file = 'objet/earth.png')
+fond=Can.create_rectangle (0, 0, 700, 700, image=photo) 
 
 
 Monde=Monde(Can)
