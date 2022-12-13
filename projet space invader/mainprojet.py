@@ -31,12 +31,9 @@ def keyboardCallBack(event):
     if event.keysym == "Left":
         if x_p_0 > 0 :
             x = -10
-            
-    
-    
     
     """droite"""
-    
+
     if event.keysym == "Right":
         if x_p_1 < 700 :
             x = 10
