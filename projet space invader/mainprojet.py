@@ -23,8 +23,7 @@ def mainLoopCallBack():
 
 
 def keyboardCallBack(event):
-    """mvt du joueur quand fleche direct """
-    """gauche"""
+    """mvt du joueur gauche"""
     x = 0
     y = 0
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
@@ -32,7 +31,7 @@ def keyboardCallBack(event):
         if x_p_0 > 0 :
             x = -10
     
-    """droite"""
+    """mvt du joueur droite"""
 
     if event.keysym == "Right":
         if x_p_1 < 700 :
