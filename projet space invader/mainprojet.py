@@ -33,7 +33,7 @@ def keyboardCallBack(event):
     
     """mvt du joueur droite"""
 
-    if event.keysym == "Right 552582":
+    if event.keysym == "Right":vnlsjdnvolsnv
         if x_p_1 < 700 :
             x = 10
     Can.move(Monde.joueur.j_id,x,y)   
