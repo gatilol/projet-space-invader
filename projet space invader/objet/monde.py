@@ -17,8 +17,3 @@ class Monde:
         e=enemi(canvas)
         e.creation_enemi(canvas)
         self.enemi=e
-
-        p=projectil(canvas)
-        p.creation_projectil(canvas)
-        self.projectip=e
-        
