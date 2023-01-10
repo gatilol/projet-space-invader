@@ -1,6 +1,7 @@
 from tkinter import *
 from objet.monde import Monde
 from objet.joueur import joueur
+from objet.projectil import projectil
 
 import os
 mv = Tk()
@@ -48,6 +49,15 @@ def keyboardCallBack(event):
     Can.move(Monde.joueur.j_id,x,y)   
 
 
+    if event.keysym == "space" :
+        (xj,yj,lj,hj)=Can.coords(Monde.joueur.j_id)
+
+        print("1854132186")
+        p = projectil(Can)
+        p.creation_projectil_joueur(Can , (xj + 2.5) , (yj + 30))
+        p.deplacement_proj_joueur(Monde.projectil.pj_id)
+
+ 
 
 
 
