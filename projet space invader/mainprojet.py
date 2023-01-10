@@ -5,11 +5,19 @@ from objet.joueur import joueur
 import os
 mv = Tk()
 mv.title('Space Invaders')
-Can=Canvas(mv, width=800, height=700, bg='white')
-Can.pack()
+Can=Canvas(mv, width=700, height=700, bg='white')
+Can.grid(row=2,column=0)
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
 photo = PhotoImage(file = 'objet/earth.png')
 fond=Can.create_rectangle (0, 0, 700, 700,fill='#000000') 
+
+buttonnewg=Button(mv,text="Nouvelle partie",width=10,command=None)
+buttonstart=Button(mv,text="Commencer",width=10)
+buttonquit=Button(mv, text="Quitter",width=10, command=mv.destroy)
+score=Label(mv,text="score:")
+buttonquit.grid(row=2,column=1)
+buttonstart.grid(row=00)
+score.grid(row=1, column=0)
 
 Monde=Monde(Can)
 
@@ -38,7 +46,7 @@ def keyboardCallBack(event):
             x = 10
     Can.move(Monde.joueur.j_id,x,y)   
 
- 
+
 
 
 
