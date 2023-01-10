@@ -33,7 +33,8 @@ def keyboardCallBack(event):
     
     """mvt du joueur droite"""
 
-    if event.keysym == "Right:
+    if event.keysym == "Right":    #tesqt de merde
+    
         if x_p_1 < 700 :
             x = 10
     Can.move(Monde.joueur.j_id,x,y)   
