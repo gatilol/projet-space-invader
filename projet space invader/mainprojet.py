@@ -45,7 +45,7 @@ def keyboardCallBack(event):
 <<<<<<< HEAD
     if event.keysym == "Right":vnlsjdnvolsnv
 =======
-    if event.keysym == "Right":  
+    if event.keysym == "Right":
     
 >>>>>>> 71450c769d8b7b11aee1a0f918b2a91fe25fe69e
         if x_p_1 < 700 :
