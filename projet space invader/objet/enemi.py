@@ -4,7 +4,7 @@ class enemi:
         self.enemi_coord_y=20
         self.enemi_hauteur=30
         self.enemi_largeur=30
-
+        self.vitesse=1
 
     def creation_enemi(self,canvas):
         self.j_id=canvas.create_rectangle(self.enemi_coord_x,
