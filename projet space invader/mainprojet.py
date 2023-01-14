@@ -6,11 +6,14 @@ from PIL import Image, ImageTk
 import os
 mv = Tk()
 mv.title('Space Invaders')
+bg=ImageTk.PhotoImage(Image.open("projet space invader\image\earth.png"))
+
 Can=Canvas(mv, width=700, height=700, bg='white')
 Can.grid(row=2,column=0)
+fond=Can.create_image(350,350,image=bg)
 #os.chdir(os.path.realpath(os.path.dirname(__file__)))
 #photo = PhotoImage(file = 'objet/earth.png')
-fond=Can.create_rectangle (0, 0, 700, 700,fill='#000000') 
+#fond=Can.create_rectangle (0, 0, 700, 700,fill='#000000') 
 top=Canvas(mv,width=700,height=35,bg="black")
 top.grid(column=0,row=0)
 buttonnewg=Button(mv,text="Nouvelle partie",width=10,command=None)
@@ -18,7 +21,11 @@ buttonstart=Button(mv,text="Commencer",width=10)
 buttonquit=Button(mv, text="Quitter",width=10, command=mv.destroy)
 buttonquit.place(y=7,x=620)
 buttonstart.place(y=7,x=5)
-
+menubar=Menu(mv)
+menumenu=Menu(menubar,tearoff=0)
+menubar.add_cascade(label='menu',menu=menumenu)
+menumenu.add_command(label='Commencer')
+menumenu.add_command(label='Quitter', command=mv.destroy)
 spaceshipe=ImageTk.PhotoImage(Image.open("projet space invader\image\spaceship.png"))
 ship=Can.create_image(340,650,image=spaceshipe)
 
@@ -38,10 +45,29 @@ Monde=Monde(Can)
 def mainLoopCallBack():
 
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
-    (x_e_0,y_e_0,x_e_1,y_e_1)=canvas.coords(Monde.enemi.j_id)
+    (x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
     
     Can.after(10, mainLoopCallBack)
 
+def spacemove():
+    (x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
+    side=0
+    if side==0:
+        
+        if x_e_1==700:
+            side=side+1
+        move=10
+            
+        
+    if side==1%2:
+        if x_e_0==0:
+            side=side+1
+        move=-10
+        
+
+    print(side)
+    Can.move(Monde.enemi.j_id,move,0)
+    Can.after(100,spacemove)
 
 def keyboardCallBack(event):
     """mvt du joueur gauche"""
@@ -71,11 +97,18 @@ def keyboardCallBack(event):
 
  
 
+#utiliser piles pour le stokage des points vider la piles pour restart la game
+#la game se restart apres a voir verisier que score null
+#pile permet de faire un recap des types d ennemi tuée
+#file pour la liste d'ennemi ?
+#debut une ligne entier d enemi qui attque pas 
+#deuxieme ligne apparait quand premiere ligne mort celle la attaque(anisi de suite
+#creer une vitesse de deplacement pour differente difficulté
 
 
 
-
-
+spacemove()
 mv.after(5,mainLoopCallBack)
 mv.bind("<Key>",keyboardCallBack)
+mv.config(menu=menubar)
 mv.mainloop()
