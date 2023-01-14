@@ -17,10 +17,9 @@ fond=Can.create_image(350,350,image=bg)
 top=Canvas(mv,width=700,height=35,bg="black")
 top.grid(column=0,row=0)
 buttonnewg=Button(mv,text="Nouvelle partie",width=10,command=None)
-buttonstart=Button(mv,text="Commencer",width=10)
 buttonquit=Button(mv, text="Quitter",width=10, command=mv.destroy)
 buttonquit.place(y=7,x=620)
-buttonstart.place(y=7,x=5)
+
 menubar=Menu(mv)
 menumenu=Menu(menubar,tearoff=0)
 menubar.add_cascade(label='menu',menu=menumenu)
@@ -38,6 +37,8 @@ lives=3
 lives=Label(mv,text="Lives left:"+str(lives),fg="white",font=50,bg="black")
 lives.place(x=200,y=7)
 
+global side
+side=0
 
 Monde=Monde(Can)
 
@@ -46,28 +47,29 @@ def mainLoopCallBack():
 
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
     (x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
-    
-    Can.after(10, mainLoopCallBack)
+    spacemove()
+    Can.after(100, mainLoopCallBack)
 
 def spacemove():
     (x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
-    side=0
-    if side==0:
-        
+    bas=0
+    global side
+    if side%2==0:
+        move=10
         if x_e_1==700:
             side=side+1
-        move=10
             
         
-    if side==1%2:
+            
+        
+    if side%2==1:
+        move=-10
         if x_e_0==0:
             side=side+1
-        move=-10
-        
-
-    print(side)
-    Can.move(Monde.enemi.j_id,move,0)
-    Can.after(100,spacemove)
+            bas=30
+            
+    Can.move(Monde.enemi.j_id,move,bas)
+    #Can.after(100,spacemove)
 
 def keyboardCallBack(event):
     """mvt du joueur gauche"""
@@ -105,10 +107,12 @@ def keyboardCallBack(event):
 #deuxieme ligne apparait quand premiere ligne mort celle la attaque(anisi de suite
 #creer une vitesse de deplacement pour differente difficulté
 
+def commencer():
+    mv.after(5,mainLoopCallBack)
 
+buttonstart=Button(mv,text="Commencer",width=10,command=commencer)
+buttonstart.place(y=7,x=5)
 
-spacemove()
-mv.after(5,mainLoopCallBack)
 mv.bind("<Key>",keyboardCallBack)
 mv.config(menu=menubar)
 mv.mainloop()
