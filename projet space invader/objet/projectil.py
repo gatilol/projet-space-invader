@@ -27,7 +27,7 @@ class projectil:
 
 
 
-
+#fonction qui fait bouger le projectil du joueur
     def deplacement_proj_joueur(self,canvas):
         b=0
         canvas.move(self.pj_id,0,-5) 
@@ -37,6 +37,7 @@ class projectil:
             b=1
         return b
 
+#fonction qui fait les colisions des missiles
     def veriftoucherprotectj(self,canvas,fullprotect):
         liste1=[]
         liste2=[]
