@@ -89,6 +89,8 @@ def mainLoopCallBack():
         for i in range(len(listemissile)):
             d=listemissile[i].veriftoucherenemi(Can,Monde.enemi.liste_enemi)
             if d!=0:
+                global score
+                score=score+100
                 listemissile.pop(i)
 
     
