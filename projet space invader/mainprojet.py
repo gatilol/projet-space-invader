@@ -51,9 +51,11 @@ Monde=Monde(Can)
 def mainLoopCallBack():
     b=0
     a=0
-    (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
+    (x_p_0,y_p_0,x_p_1,y_p_1)=Can.bbox(ship)
     #(x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
     spacemove()
+
+    
     if len(listemissile)!=0:
         for i in range(len(listemissile)):
             b=listemissile[i].deplacement_proj_joueur(Can)
@@ -62,7 +64,9 @@ def mainLoopCallBack():
             for v in range(a):
                 listemissile.pop(0)
 
-    print(len(listemissile))
+
+    
+
 
     Can.after(10, mainLoopCallBack)
 
@@ -86,7 +90,7 @@ def keyboardCallBack(event):
     """mvt du joueur gauche"""
     x = 0
     y = 0
-    (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
+    (x_p_0,y_p_0,x_p_1,y_p_1)=Can.bbox(ship)
     if event.keysym == "Left":
         if x_p_0 > 0 :
             x = -10
@@ -102,7 +106,7 @@ def keyboardCallBack(event):
 
     if event.keysym == "space" :
         (xj,yj,lj,hj)=Can.bbox(ship)
-        print((xj,yj,lj,hj))
+
         p = projectil(Can)
         p.creation_projectil_joueur(Can , (xj + 17.5) , (yj - 30))
         listemissile.append(p)

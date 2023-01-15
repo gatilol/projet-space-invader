@@ -11,9 +11,9 @@ class Monde:
 
 
     def init_monde(self,canvas):
-        j=joueur(canvas)
-        j.creation_joueur(canvas)
-        self.joueur=j
+        #j=joueur(canvas)
+        #j.creation_joueur(canvas)
+        #self.joueur=j
         
         #e=enemi(canvas)
         #e.creation_enemi(canvas)
