@@ -32,7 +32,7 @@ class enemi:
                 
 
 
-
+#fonction qui fait bouger un groupe d enemi simple
     def movement(self,canvas):
         bas=0
         for i,val in enumerate(self.liste_enemi):

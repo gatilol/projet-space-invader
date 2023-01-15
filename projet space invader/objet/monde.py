@@ -4,7 +4,7 @@ from .projectil import projectil
 from .protection import protection
 
 class Monde: 
-
+#classe qui initialisé le jeu
     def __init__(self,canvas):
         self.init_monde(canvas)
 

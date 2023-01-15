@@ -7,6 +7,7 @@ class protection:
         self.bloc=[]
         self.tbloc=[]
         self.fullprotect=[]
+        
 #creation des protections
     def creation_protection(self,canvas):
         for bloc in range (2):
