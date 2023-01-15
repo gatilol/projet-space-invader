@@ -22,17 +22,6 @@ class projectil:
         return self.pj_id
 
 
-    def getcoordx(self):
-        return self.projectil_coord_x
-    
-    def getlargeur(self):
-        return self.projectil_largeur
-    
-    def getcoordy(self):
-        return self.projectil_coord_y
-    
-    def gethauteur(self):
-        return self.projectil_hauteur
 
 
 
