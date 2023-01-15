@@ -146,7 +146,7 @@ def keyboardCallBack(event):
 
 #fonction qui permet de lancer les mouvement et permettre le commencement du jeu
 def commencer():
-    alien=Can.create_image(25,30,image=aliene)
+
     mv.after(5,mainLoopCallBack)
 #bouton commencer
 buttonstart=Button(mv,text="Commencer",width=10,command=commencer)
