@@ -68,6 +68,7 @@ def mainLoopCallBack():
     #(x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.e_id)
     enemi_move()
     #enemi.enemi_move2(Can)
+    Monde.enemi.movement(Can)
 
 
     if len(listemissile)!=0:
