@@ -1,35 +1,46 @@
 from tkinter import *
 from objet.monde import Monde
 from objet.joueur import joueur
+from objet.enemi import enemi
 from objet.projectil import projectil
 from PIL import Image, ImageTk
 import os
+
+#creation fenetre Tkinter
 mv = Tk()
 mv.title('Space Invaders')
-bg=ImageTk.PhotoImage(Image.open("projet space invader\image\earth.png"))
 
+#load des images 
+bg=ImageTk.PhotoImage(Image.open("projet space invader\image\earth.png"))
+aliene=ImageTk.PhotoImage(Image.open("projet space invader\image\Alien.png"))
+spaceshipe=ImageTk.PhotoImage(Image.open("projet space invader\image\spaceship.png"))
+
+#creation de la zone de jeu et bordure pour bouton, score et pt de vie
 Can=Canvas(mv, width=700, height=700, bg='white')
-Can.grid(row=2,column=0)
-fond=Can.create_image(350,350,image=bg)
-#os.chdir(os.path.realpath(os.path.dirname(__file__)))
-#photo = PhotoImage(file = 'objet/earth.png')
-#fond=Can.create_rectangle (0, 0, 700, 700,fill='#000000') 
 top=Canvas(mv,width=700,height=35,bg="black")
-top.grid(column=0,row=0)
+
+#creation des bouton
 buttonnewg=Button(mv,text="Nouvelle partie",width=10,command=None)
 buttonquit=Button(mv, text="Quitter",width=10, command=mv.destroy)
-buttonquit.place(y=7,x=620)
 
+#barre du menu
 menubar=Menu(mv)
 menumenu=Menu(menubar,tearoff=0)
 menubar.add_cascade(label='menu',menu=menumenu)
 menumenu.add_command(label='Commencer')
 menumenu.add_command(label='Quitter', command=mv.destroy)
-spaceshipe=ImageTk.PhotoImage(Image.open("projet space invader\image\spaceship.png"))
+
+#positionnement sur la fenetre
+top.grid(column=0,row=0)
+buttonquit.place(y=7,x=620)
+Can.grid(row=2,column=0)
+fond=Can.create_image(350,350,image=bg)
+
+#creation des du vaiseau et d'un enemi
 ship=Can.create_image(340,650,image=spaceshipe)
-aliene=ImageTk.PhotoImage(Image.open("projet space invader\image\Alien.png"))
 alien=Can.create_image(25,30,image=aliene)
 
+#stockage et affichage du score et du nb de vie:
 global score
 score=0
 score=Label(mv,text="score:"+str(score),fg="white",font=50,bg="black")
@@ -39,13 +50,13 @@ lives=3
 lives=Label(mv,text="Lives left:"+str(lives),fg="white",font=50,bg="black")
 lives.place(x=200,y=7)
 
-global side
-side=0
+
 
 global listemissile
 listemissile=[]
 
 Monde=Monde(Can)
+
 
 
 def mainLoopCallBack():
@@ -54,8 +65,9 @@ def mainLoopCallBack():
     c=0
     d=0
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.bbox(ship)
-    #(x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
-    spacemove()
+    #(x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.e_id)
+    enemi_move()
+    enemi.enemi_move2(Can)
 
 
     if len(listemissile)!=0:
@@ -74,7 +86,11 @@ def mainLoopCallBack():
                 
     Can.after(10, mainLoopCallBack)
 
-def spacemove():
+#fonction pour bouger les enemis image
+global side
+side=0
+
+def enemi_move():
     (x_e_0,y_e_0,x_e_1,y_e_1)=Can.bbox(alien)
     bas=0
     global side
@@ -88,8 +104,9 @@ def spacemove():
             side=side+1
             bas=30      
     Can.move(alien,move,bas)
-    #Can.after(100,spacemove)
 
+
+#fonction pour les mouvements du joueur(vaiseau)[droite, gauche, tire]
 def keyboardCallBack(event):
     """mvt du joueur gauche"""
     x = 0
@@ -107,27 +124,18 @@ def keyboardCallBack(event):
             x = 10
     Can.move(ship,x,y)   
 
-
+    
     if event.keysym == "space" :
         (xj,yj,lj,hj)=Can.bbox(ship)
 
         p = projectil(Can)
         p.creation_projectil_joueur(Can , (xj + 17.5) , (yj - 30))
         listemissile.append(p)
-        
- 
 
-#utiliser piles pour le stokage des points vider la piles pour restart la game
-#la game se restart apres a voir verisier que score null
-#pile permet de faire un recap des types d ennemi tuée
-#file pour la liste d'ennemi ?
-#debut une ligne entier d enemi qui attque pas 
-#deuxieme ligne apparait quand premiere ligne mort celle la attaque(anisi de suite
-#creer une vitesse de deplacement pour differente difficulté
-
+#fonction qui permet de lancer les mouvement et permettre le commencement du jeu
 def commencer():
     mv.after(5,mainLoopCallBack)
-
+#bouton commencer
 buttonstart=Button(mv,text="Commencer",width=10,command=commencer)
 buttonstart.place(y=7,x=5)
 
