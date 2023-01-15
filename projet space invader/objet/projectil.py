@@ -10,36 +10,27 @@ class projectil:
         self.projectil_coord_y=0
         self.projectil_hauteur=30
         self.projectil_largeur=5
+        self.listproj=[]
 
     def creation_projectil_joueur(self,canvas,X,Y):
         self.projectil_coord_x=X
         self.projectil_coord_y=Y
         self.pj_id=canvas.create_rectangle(self.projectil_coord_x,
                                     self.projectil_coord_y,
-                                    self.projectil_coord_x+self.projectil_hauteur,
-                                    self.projectil_coord_y+self.projectil_largeur,
+                                    self.projectil_coord_x+self.projectil_largeur,
+                                    self.projectil_coord_y+self.projectil_hauteur,
                                     outline="#fb0", fill="#fb0")
+        self.listproj.append(self.pj_id)
         return self.pj_id
 
 
-    def getcoordx(self):
-        return self.projectil_coord_x
-    
-    def getlargeur(self):
-        return self.projectil_largeur
-    
-    def getcoordy(self):
-        return self.projectil_coord_y
-    
-    def gethauteur(self):
-        return self.projectil_hauteur
 
 
 
 
     def deplacement_proj_joueur(self,canvas):
-        canvas.move(self.pj_id,0,3)
-        if self.projectil_coord_y>0 :
-            canvas.after(10 ,deplacement_proj_joueur(canvas))
-        else :
-            canvas.delete(self.pj_id)
+        if len(self.listproj)!=0:
+            for i in range(len(self.listproj)):
+                canvas.move(self.listproj[i],0,-10) 
+
+
