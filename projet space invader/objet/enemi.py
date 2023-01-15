@@ -32,14 +32,4 @@ class enemi:
     #    if side==1%2 and self.enemi_coord_x!=0:
     #        self.enemi_coord_x= self.enemi_coord_x - self.vitesse*self.enemi_largeur
 
-    def getcoordx(self):
-        return self.enemi_coord_x
-    
-    def getlargeur(self):
-        return self.enemi_largeur
-    
-    def getcoordy(self):
-        return self.enemi_coord_y
-    
-    def gethauteur(self):
-        return self.enemi_hauteur
+
