@@ -17,14 +17,3 @@ class joueur:
     def mvt_joueur(self,canvas):
         pass
 
-    def getcoordx(self):
-        return self.joueur_coord_x
-    
-    def getlargeur(self):
-        return self.joueur_largeur
-    
-    def getcoordy(self):
-        return self.joueur_coord_y
-    
-    def gethauteur(self):
-        return self.joueur_hauteur
