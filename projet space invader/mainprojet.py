@@ -27,6 +27,8 @@ menumenu.add_command(label='Commencer')
 menumenu.add_command(label='Quitter', command=mv.destroy)
 spaceshipe=ImageTk.PhotoImage(Image.open("projet space invader\image\spaceship.png"))
 ship=Can.create_image(340,650,image=spaceshipe)
+aliene=ImageTk.PhotoImage(Image.open("projet space invader\image\Alien.png"))
+alien=Can.create_image(25,30,image=aliene)
 
 global score
 score=0
@@ -51,24 +53,19 @@ def mainLoopCallBack():
     Can.after(100, mainLoopCallBack)
 
 def spacemove():
-    (x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
+    (x_e_0,y_e_0,x_e_1,y_e_1)=Can.bbox(alien)
     bas=0
     global side
     if side%2==0:
         move=10
         if x_e_1==700:
-            side=side+1
-            
-        
-            
-        
+            side=side+1     
     if side%2==1:
         move=-10
         if x_e_0==0:
             side=side+1
-            bas=30
-            
-    Can.move(Monde.enemi.j_id,move,bas)
+            bas=30      
+    Can.move(alien,move,bas)
     #Can.after(100,spacemove)
 
 def keyboardCallBack(event):

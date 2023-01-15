@@ -1,4 +1,5 @@
-
+from PIL import Image, ImageTk
+from tkinter import *
 class joueur:
     def __init__(self,canvas):
         self.joueur_coord_x=340
