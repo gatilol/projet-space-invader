@@ -91,18 +91,20 @@ global side
 side=0
 
 def enemi_move():
-    (x_e_0,y_e_0,x_e_1,y_e_1)=Can.bbox(alien)
     bas=0
+    (x_e_0,y_e_0,x_e_1,y_e_1)=Can.bbox(alien)
     global side
     if side%2==0:
-        move=5
-        if x_e_1==700:
-            side=side+1     
+        move=30
+        if x_e_1>=900:
+            side=side+1  
+            bas=30   
     if side%2==1:
-        move=-5
-        if x_e_0==0:
+        move=-30
+        if x_e_0<=-200:
             side=side+1
-            bas=30      
+            bas=30
+                  
     Can.move(alien,move,bas)
 
 
