@@ -40,6 +40,9 @@ lives.place(x=200,y=7)
 global side
 side=0
 
+global listemissile
+listemissile=[]
+
 Monde=Monde(Can)
 
 
@@ -48,14 +51,18 @@ def mainLoopCallBack():
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.coords(Monde.joueur.j_id)
     (x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
     spacemove()
-    Can.after(100, mainLoopCallBack)
+    if len(listemissile)!=0:
+        for i in range(len(listemissile)):
+            listemissile[i].deplacement_proj_joueur(Can)
+
+    Can.after(10, mainLoopCallBack)
 
 def spacemove():
     (x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
     bas=0
     global side
     if side%2==0:
-        move=10
+        move=2
         if x_e_1==700:
             side=side+1
             
@@ -63,7 +70,7 @@ def spacemove():
             
         
     if side%2==1:
-        move=-10
+        move=-2
         if x_e_0==0:
             side=side+1
             bas=30
@@ -94,8 +101,7 @@ def keyboardCallBack(event):
 
         p = projectil(Can)
         p.creation_projectil_joueur(Can , (xj + 7.5) , (yj - 30))
-        p.deplacement_proj_joueur(Monde.projectil.pj_id)
-
+        listemissile.append(p)
  
 
 #utiliser piles pour le stokage des points vider la piles pour restart la game
