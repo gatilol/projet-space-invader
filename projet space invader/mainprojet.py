@@ -92,9 +92,8 @@ def keyboardCallBack(event):
     if event.keysym == "space" :
         (xj,yj,lj,hj)=Can.coords(Monde.joueur.j_id)
 
-        print("1854132186")
         p = projectil(Can)
-        p.creation_projectil_joueur(Can , (xj + 2.5) , (yj + 30))
+        p.creation_projectil_joueur(Can , (xj + 7.5) , (yj - 30))
         p.deplacement_proj_joueur(Monde.projectil.pj_id)
 
  
