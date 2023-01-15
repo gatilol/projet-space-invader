@@ -38,8 +38,6 @@ class projectil:
         return b
 
     def veriftoucherprotectj(self,canvas,fullprotect):
-        liste1=[]
-        liste2=[]
         b=0
         (x_p_0,y_p_0,x_p_1,y_p_1)=canvas.coords(self.pj_id)
         for i,tblock in enumerate(fullprotect):
@@ -53,4 +51,16 @@ class projectil:
 
                         b=1
                         fullprotect[i][v].pop(w)
+        return b
+
+    def veriftoucherenemi(self,canvas,listenemi):
+        b=0
+        (x_p_0,y_p_0,x_p_1,y_p_1)=canvas.coords(self.pj_id)
+        for i,enemi in enumerate(listenemi):
+            (x_0,y_0,x_1,y_1)=canvas.coords(enemi)
+            if x_0<x_p_0<x_1 and x_0<x_p_1<x_1 and y_0<y_p_0<y_1 :
+                canvas.delete(self.pj_id)
+                canvas.delete(enemi)
+
+                b=1
         return b

@@ -38,7 +38,7 @@ fond=Can.create_image(350,350,image=bg)
 
 #creation des du vaiseau et d'un enemi
 ship=Can.create_image(340,650,image=spaceshipe)
-#alien=Can.create_image(25,30,image=aliene)
+alien=Can.create_image(25,30,image=aliene)
 
 #stockage et affichage du score et du nb de vie:
 global score
@@ -84,6 +84,15 @@ def mainLoopCallBack():
             c=listemissile[i].veriftoucherprotectj(Can,Monde.protection.fullprotect)
             if c!=0:
                 listemissile.pop(i)
+
+    if len(listemissile)!=0:
+        for i in range(len(listemissile)):
+            d=listemissile[i].veriftoucherenemi(Can,Monde.enemi.liste_enemi)
+            if d!=0:
+                listemissile.pop(i)
+
+    
+    
                 
     Can.after(10, mainLoopCallBack)
 
@@ -137,7 +146,7 @@ def keyboardCallBack(event):
 
 #fonction qui permet de lancer les mouvement et permettre le commencement du jeu
 def commencer():
-    alien=Can.create_image(25,30,image=aliene)
+
     mv.after(5,mainLoopCallBack)
 #bouton commencer
 buttonstart=Button(mv,text="Commencer",width=10,command=commencer)
