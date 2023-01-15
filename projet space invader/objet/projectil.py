@@ -12,6 +12,7 @@ class projectil:
         self.projectil_largeur=5
         self.listproj=[]
 
+#creation des projectil
     def creation_projectil_joueur(self,canvas,X,Y):
         self.projectil_coord_x=X
         self.projectil_coord_y=Y
@@ -20,11 +21,6 @@ class projectil:
                                     self.projectil_coord_x+self.projectil_largeur,
                                     self.projectil_coord_y+self.projectil_hauteur,
                                     outline="#fb0", fill="#fb0")
-
-
-
-
-
 
 
 
