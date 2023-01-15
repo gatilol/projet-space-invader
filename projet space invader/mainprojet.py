@@ -51,11 +51,13 @@ Monde=Monde(Can)
 def mainLoopCallBack():
     b=0
     a=0
+    c=0
+    d=0
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.bbox(ship)
     #(x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.j_id)
     spacemove()
 
-    
+
     if len(listemissile)!=0:
         for i in range(len(listemissile)):
             b=listemissile[i].deplacement_proj_joueur(Can)
@@ -63,11 +65,13 @@ def mainLoopCallBack():
         if a!=0:    
             for v in range(a):
                 listemissile.pop(0)
-
-
     
-
-
+    if len(listemissile)!=0:
+        for i in range(len(listemissile)):
+            c=listemissile[i].veriftoucherprotectj(Can,Monde.protection.fullprotect)
+            if c!=0:
+                listemissile.pop(i)
+                
     Can.after(10, mainLoopCallBack)
 
 def spacemove():
@@ -75,11 +79,11 @@ def spacemove():
     bas=0
     global side
     if side%2==0:
-        move=2
+        move=5
         if x_e_1==700:
             side=side+1     
     if side%2==1:
-        move=-2
+        move=-5
         if x_e_0==0:
             side=side+1
             bas=30      
@@ -126,6 +130,9 @@ def commencer():
 
 buttonstart=Button(mv,text="Commencer",width=10,command=commencer)
 buttonstart.place(y=7,x=5)
+
+
+
 
 mv.bind("<Key>",keyboardCallBack)
 mv.config(menu=menubar)

@@ -1,7 +1,6 @@
 from re import X
 from tkinter import Y
-from objet.joueur import joueur
-from objet.enemi import enemi
+from objet.protection import protection
 
 
 class projectil:
@@ -25,9 +24,6 @@ class projectil:
 
 
 
-
-
-
     def deplacement_proj_joueur(self,canvas):
         b=0
         canvas.move(self.pj_id,0,-5) 
@@ -35,4 +31,22 @@ class projectil:
         if y_p_1<=0:
             canvas.delete(self.pj_id)
             b=1
+        return b
+
+    def veriftoucherprotectj(self,canvas,fullprotect):
+        liste1=[]
+        liste2=[]
+        b=0
+        (x_p_0,y_p_0,x_p_1,y_p_1)=canvas.coords(self.pj_id)
+        for i,tblock in enumerate(fullprotect):
+            for v,block in enumerate(tblock):
+                for w,prot in enumerate(block):
+                    (x_0,y_0,x_1,y_1)=canvas.coords(prot)
+                    
+                    if x_0<x_p_0<x_1 and x_0<x_p_1<x_1 and y_0<y_p_0<y_1 :
+                        canvas.delete(self.pj_id)
+                        canvas.delete(prot)
+
+                        b=1
+                        fullprotect[i][v].pop(w)
         return b
