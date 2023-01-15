@@ -4,6 +4,7 @@ class enemi:
         self.enemi_coord_y=20
         self.enemi_hauteur=30
         self.enemi_largeur=30
+        self.liste_enemi=[]
         self.vitesse=1
 
     def creation_enemi(self,canvas):
