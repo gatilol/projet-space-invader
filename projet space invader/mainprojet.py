@@ -38,7 +38,7 @@ fond=Can.create_image(350,350,image=bg)
 
 #creation des du vaiseau et d'un enemi
 ship=Can.create_image(340,650,image=spaceshipe)
-alien=Can.create_image(25,30,image=aliene)
+#alien=Can.create_image(25,30,image=aliene)
 
 #stockage et affichage du score et du nb de vie:
 global score
@@ -67,6 +67,7 @@ def mainLoopCallBack():
     (x_p_0,y_p_0,x_p_1,y_p_1)=Can.bbox(ship)
     #(x_e_0,y_e_0,x_e_1,y_e_1)=Can.coords(Monde.enemi.e_id)
     enemi_move()
+    #enemi.enemi_move2(Can)
     Monde.enemi.movement(Can)
 
 
@@ -136,6 +137,7 @@ def keyboardCallBack(event):
 
 #fonction qui permet de lancer les mouvement et permettre le commencement du jeu
 def commencer():
+    alien=Can.create_image(25,30,image=aliene)
     mv.after(5,mainLoopCallBack)
 #bouton commencer
 buttonstart=Button(mv,text="Commencer",width=10,command=commencer)
@@ -145,5 +147,5 @@ buttonstart.place(y=7,x=5)
 
 
 mv.bind("<Key>",keyboardCallBack)
-mv.config(menu=menubar)
+
 mv.mainloop()
