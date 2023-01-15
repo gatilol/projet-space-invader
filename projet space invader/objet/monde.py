@@ -1,6 +1,7 @@
 from .joueur import joueur
 from .enemi import enemi
 from .projectil import projectil
+from .protection import protection
 
 
 class Monde: 
@@ -17,3 +18,8 @@ class Monde:
         e=enemi(canvas)
         e.creation_enemi(canvas)
         self.enemi=e
+        
+
+        pr=protection(canvas)
+        pr.creation_protection(canvas)
+        self.protection=pr
