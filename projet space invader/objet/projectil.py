@@ -16,8 +16,8 @@ class projectil:
         self.projectil_coord_y=Y
         self.pj_id=canvas.create_rectangle(self.projectil_coord_x,
                                     self.projectil_coord_y,
-                                    self.projectil_coord_x+self.projectil_hauteur,
-                                    self.projectil_coord_y+self.projectil_largeur,
+                                    self.projectil_coord_x+self.projectil_largeur,
+                                    self.projectil_coord_y+self.projectil_hauteur,
                                     outline="#fb0", fill="#fb0")
         return self.pj_id
 
