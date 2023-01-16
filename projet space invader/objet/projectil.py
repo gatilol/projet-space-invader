@@ -57,7 +57,7 @@ class projectil:
         b=0
         (x_p_0,y_p_0,x_p_1,y_p_1)=canvas.coords(self.pj_id)
         for i,enemi in enumerate(listenemi):
-            (x_0,y_0,x_1,y_1)=canvas.coords(enemi)
+            (x_0,y_0,x_1,y_1)=canvas.bbox(enemi)
             if x_0<x_p_0<x_1 and x_0<x_p_1<x_1 and y_0<y_p_0<y_1 :
                 canvas.delete(self.pj_id)
                 canvas.delete(enemi)

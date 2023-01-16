@@ -1,0 +1,10 @@
+Ajout pendant le TP:
+
+Passage d'enemi simple à enemi image.
+modification de code pour bon fct(modification sur class monde ,classe enemi,classe projectil, main prject)
+
+tentative que le jeu ne s'arrete plus quand un missile touche un enemi sans succès
+(l'enemi est detruit mais s'il y a un autre tire en même temps le jeu se stop)
+
+message apres defaite avec choix pour recommencer ou quitter le programme créer mais pas ajouter dans le code
+(condition de defaite si l'enemi/image atteint le niveau du vaisseau)
